@@ -87,8 +87,8 @@
 <label>option-2<input type="checkbox"></label>
 <label>option-3<input type="checkbox"></label>
 <br>
-<label>Yes <input type="radio"></label>
-<label>No <input type="radio"></label>
+<label>Yes <input type="radio" name="yesno" value="yes"></label>
+<label>No <input type="radio" name="yesno" value="no"></label>
 <br>
   <textarea name="Feedback" id="" cols="30" rows="10"></textarea>
   
@@ -96,6 +96,11 @@
     Your message:
     <textarea name="message"></textarea>
   </label>
+  <br>
+  <select name="languages" id="gen">Java
+    <option value="java">java</option>
+    <option value="C++">c++</option>
+</select>
   <!-- your other form fields go here -->
   <button type="submit">Send</button>
 </form>
