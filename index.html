@@ -13,16 +13,16 @@
     <body>
 
         <header>
-            <img src="./dark-logo.png" alt="#LOGO(cant load image)" width="100%">
-            <a href="./page2.html"> <img src="./next.png" width="10%" alt="images"></a>
-            <nav>navigation-links / lists</nav>
-            <ul>
-                <li>Home</li>
-                <li>Facebook</li>
-                <li>Instagram</li>
-                <li>LinkedIn</li>
+            <img src="./dark-logo.png" alt="#LOGO(cant load image)" width="100%" id="logo">
+            <nav> <h1 id="navigaation-bar">navigation-links / lists</nav></h1>
+            <ul> 
+                <li> <a href="https://www.facebook.com/pushpraj.rmx" target="blank">Facebook</a></li>
+                <li> <a href="https://www.instagram.com/pushpraj.rmx" target="blank">Instagram</a></li>                
+                <li> <a href="https://www.linkedin.com/in/pushpraj-rmx/" target="blank">LinkedIn</a></li>
+                <li> <a href="https://www.quora.com/pushpraj-rmx" target="blank"> Quora</a></li>
+                <li> <a href="https://www.github.com/pushpraj-rmx" target="blank" >GitHub</a></li>
+                <li><a href="./about-me.html" target="blank">About me </a></li>
             </ul>
-            <!--tables-->
 <table>
     <thead>
         <caption>List of numner-table</caption>
@@ -34,7 +34,7 @@
     </thead>
     <tbody>
 
-        <td>one</td>
+        <td> <a href="#"> link</a></td>
     <td>two</td>
     <td>three</td>
 </tr>
@@ -70,18 +70,45 @@
 
     <h> Hello Friend</p>
         <p> this is a paragraph</p>
-        <form action="">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <br><br>
-        <textarea name="Feedback" id="" cols="30" rows="10"></textarea>
-        <input type="date">
-        <input type="checkbox">
-        <input type="checkbox">
-        <input type="checkbox">
-        <input type="radio">
-        <button>Submit</button>
-    </form>
-    <iframe src="https://www.giraffeacademy.com" frameborder="0" width="100%">text </iframe>
+
+<!-- THIS SECTION CONTAINS A FORM, USIGN 'FORMSPREE' AS A BACKNED SOLUTION-->
+
+<!-- modify this form HTML and place wherever you want your form -->
+<form
+  action="https://formspree.io/f/xjvlabrj"
+  method="POST"
+>
+  <label>Your email:<input type="email" name="email"></label>
+<label>Your Username <input type="text" placeholder="Username"></label>
+<label> Enter Password<input type="password" placeholder="Password"></label>
+<label>Date of birth<input type="date"></label>
+<label>choose applicable <br> <input type="checkbox">
+<label>option-1<input type="checkbox"></label>
+<label>option-2<input type="checkbox"></label>
+<label>option-3<input type="checkbox"></label>
+<br>
+<label>Yes <input type="radio"></label>
+<label>No <input type="radio"></label>
+<br>
+  <textarea name="Feedback" id="" cols="30" rows="10"></textarea>
+  
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
+
+        <h2>Navigate to [inside page : internal links]</h2>
+        <a href="#navigaation-bar">Navigation-links</a>
+        <a href="#logo">Logo</a>
+
+<!--    <iframe src="https://www.giraffeacademy.com" frameborder="0" width="100%">text </iframe> -->
+<br>
+<hr>     
+    <a href="./page2.html"> <img src="./next.png" width="10%" alt="images"></a>
+
+     <h5>Copyright &copy;</h5>
 </body>
 </html>
