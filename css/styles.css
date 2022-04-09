@@ -1,0 +1,36 @@
+* {
+    background-color: antiquewhite;
+}
+/* LINKS DECORATION */
+a:link, a:visited {
+    color: orangered;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid orangered;
+    background-color: black;
+    position: relative;
+}
+a:hover, a:active {
+    color: green;
+    text-decoration: none;
+    border:1px solid green
+}
+/*classes and Ids work similar but id's need to be unique and classes need not be unique thus ccccan be multiple times*/
+/*------------------------------------------------------*/
+#header {
+    background-color: black;
+}
+/* MAIN */
+#h-article-1 {
+    background-color: black;
+    color: antiquewhite;
+    text-align: center;
+}
+
+#h-article-2 {
+    background-color: black;
+    color: antiquewhite;
+    text-align: center;
+}
+/*selection by ID # */

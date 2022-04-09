@@ -5,71 +5,43 @@
         <meta name="description" content="this is my website"> 
         <meta name="keywords" content="Pushpraj, Akshay, Coder">
         <meta name="viewport" content="width=device-width, initial scale=1.0">
+        <link rel="stylesheet" href="./css/styles.css">
+        <!-- External css gets overwritten by internal css and internal css gets overwritten by inline css -->
         <title>
             Pushpraj-rmx
         </title> 
     <head> 
-
+        <!-- BODY-->
     <body>
-
-        <header>
-            <img src="./dark-logo.png" alt="#LOGO(cant load image)" width="100%" id="logo">
-            <nav> <h1 id="navigaation-bar">navigation-links / lists</nav></h1>
-            <ul> 
-                <li> <a href="https://www.facebook.com/pushpraj.rmx" target="blank">Facebook</a></li>
-                <li> <a href="https://www.instagram.com/pushpraj.rmx" target="blank">Instagram</a></li>                
-                <li> <a href="https://www.linkedin.com/in/pushpraj-rmx/" target="blank">LinkedIn</a></li>
-                <li> <a href="https://www.quora.com/pushpraj-rmx" target="blank"> Quora</a></li>
-                <li> <a href="https://www.github.com/pushpraj-rmx" target="blank" >GitHub</a></li>
-                <li><a href="./about-me.html" target="blank">About me </a></li>
-            </ul>
-<table>
-    <thead>
-        <caption>List of numner-table</caption>
-        <tr>
-            <th>Num1</th>
-            <th>Num2</th>
-            <th>Num3</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        <td> <a href="#"> link</a></td>
-    <td>two</td>
-    <td>three</td>
-</tr>
-<!-- tables headddders can be used in palce of <td> -->
-<tr>
-    <td>four</td>
-    <td>five</td>
-    <td>six</td>
-</tr>
-        <!-- block and inline, there are two types of element-->>
-
-</tbody>
-</table>
-
-    <!-- span is inline container and divs are block container-->>
-
-
-            <a href="./page2.html">next-page</a>
-            <a href="https://www.google.com" target="_blank">Google</a>
-<!-- <video src="./video-file.mp4" controls> Videos</video> -->
+        <header id="header">
+            <img src="./logo-only.png" alt="#LOGO(cant load image)" width="80px" id="logo">
+            <a href="https://www.facebook.com/pushpraj.rmx" target="blank">Facebook</a>
+            <a href="https://www.instagram.com/pushpraj.rmx" target="blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/pushpraj-rmx/" target="blank">LinkedIn</a>
+            <a href="https://www.quora.com/pushpraj-rmx" target="blank"> Quora</a>
+            <a href="https://www.github.com/pushpraj-rmx" target="blank" >GitHub</a>
+            <a href="./about-me.html" target="blank">About me </a>            
         </header>
-        <main>
-            <article>
-                this is article secton 
-            </article>
-            <section>
-                another section -- and it can be used  in .. different order
-            </section>
-            <aside>
-                side content- like ads
-            </aside>
-        </main>
+        <hr>
+<!--    <iframe src="https://www.giraffeacademy.com" frameborder="0" width="100%">text </iframe> -->
 
-    <h> Hello Friend</p>
-        <p> this is a paragraph</p>
+    <main>
+            <article id="article-1">
+                <h2 id="h-article-1"> Article #1 </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eaque sequi voluptas laborum expedita itaque numquam? Sed quidem, accusamus facere itaque harum, vel, deserunt soluta beatae optio esse nemo rerum et aliquam quos amet veritatis velit! Dolore aut quis harum architecto repellendus cupiditate. Aliquam ipsa facere cumque odio provident. Cupiditate at soluta ipsam optio, ex omnis doloribus sint quisquam, reiciendis aliquid delectus eveniet beatae a accusamus nisi praesentium iusto numquam.</p>
+            </article>
+
+            <article id="article-2">
+                <h2 id="h-article-2"> Article #2 </h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eaque sequi voluptas laborum expedita itaque numquam? Sed quidem, accusamus facere itaque harum, vel, deserunt soluta beatae optio esse nemo rerum et aliquam quos amet veritatis velit! Dolore aut quis harum architecto repellendus cupiditate. Aliquam ipsa facere cumque odio provident. Cupiditate at soluta ipsam optio, ex omnis doloribus sint quisquam, reiciendis aliquid delectus eveniet beatae a accusamus nisi praesentium iusto numquam.</p>
+            </article>
+
+        <!--<aside>
+                 this can be used for ads
+            </aside>
+        -->
+    </main>
+<h2 id="form-heading">Please Fill the following form</h2>
 
 <!-- THIS SECTION CONTAINS A FORM, USIGN 'FORMSPREE' AS A BACKNED SOLUTION-->
 
@@ -77,7 +49,7 @@
 <form
   action="https://formspree.io/f/xjvlabrj"
   method="POST"
->
+  >
   <label>Your email:<input type="email" name="email"></label>
 <label>Your Username <input type="text" placeholder="Username"></label>
 <label> Enter Password<input type="password" placeholder="Password"></label>
@@ -96,7 +68,7 @@
     Your message:
     <textarea name="message"></textarea>
   </label>
-  <br>
+  <br> 
   <select name="languages" id="gen">Java
     <option value="java">java</option>
     <option value="C++">c++</option>
@@ -111,6 +83,48 @@
 
 <!--    <iframe src="https://www.giraffeacademy.com" frameborder="0" width="100%">text </iframe> -->
 <br>
+<hr>
+</h1>
+<ul> 
+    <li> <a href="https://www.facebook.com/pushpraj.rmx" target="blank">Facebook</a></li>
+    <li> <a href="https://www.instagram.com/pushpraj.rmx" target="blank">Instagram</a></li>                
+    <li> <a href="https://www.linkedin.com/in/pushpraj-rmx/" target="blank">LinkedIn</a></li>
+    <li> <a href="https://www.quora.com/pushpraj-rmx" target="blank"> Quora</a></li>
+    <li> <a href="https://www.github.com/pushpraj-rmx" target="blank" >GitHub</a></li>
+    <li><a href="./about-me.html" target="blank">About me </a></li>
+</ul>
+<nav> 
+    <h1 
+        id="navigaation-bar">navigation-links / lists</nav>
+<table>
+<thead>
+<caption>List of numner-table</caption>
+<tr>
+<th>Num1</th>
+<th>Num2</th>
+<th>Num3</th>
+</tr>
+</thead>
+<tbody>
+
+<td> <a href="#"> link</a></td>
+<td>two</td>
+<td>three</td>
+</tr>
+<!-- tables headddders can be used in palce of <td> -->
+<tr>
+<td>four</td>
+<td>five</td>
+<td>six</td>
+</tr>
+<!-- block and inline, there are two types of element-->>
+</tbody>
+</table>
+<!-- span is inline container and divs are block container-->>
+
+<a href="./page2.html">next-page</a>
+<a href="https://www.google.com" target="_blank">Google</a>
+<!-- <video src="./video-file.mp4" controls> Videos</video> -->
 <hr>     
     <a href="./page2.html"> <img src="./next.png" width="10%" alt="images"></a>
 
