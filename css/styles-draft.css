@@ -1,0 +1,104 @@
+/* LINKS DECORATION */
+a:link, a:visited {
+    color: orangered;
+    text-decoration: none;
+    border: 1px solid orangered ;
+    padding: 12px;
+    background-color: #0000;
+}
+a:hover, a:active {
+    color: green;
+    text-decoration: none;
+    border:1px solid green
+}
+/*classes and Ids work similar but id's need to be unique and classes need not be unique thus ccccan be multiple times*/
+/*------------------------------------------------------*/
+.header {
+    background-image: url(https://i.ibb.co/8jygRV3/green-bg.jpg); 
+    background-position: left top;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
+    padding-bottom: 40px;
+
+}
+
+.header a:link, a:visited{
+    color: orangered;
+    text-decoration: none;
+    border: 2px solid orangered;
+    border-radius: 10%;
+}
+
+.header a:hover, a:active {
+    color: blue;
+    text-decoration: none;
+    border: 2px solid blue;
+    border-radius: 10%;
+}
+
+
+/* MAIN */
+#h-article-1 {
+    background-color: black;
+    color: antiquewhite;
+    text-align: center;
+}
+
+#h-article-2 {
+    background-color: black;
+    color: antiquewhite;
+    text-align: center;
+}
+/*selection by ID # */
+img {
+    filter: blur(80%);
+    display: inline;
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+
+
+/*blurry background*/
+body, html {
+    height: 100%;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-image {
+    /* The image used */
+    background-image: url("/pushpraj-rmx.github.io/bg.jpg");
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  /*  ----------------------------------------------            */
+  /* Position text in the middle of the page/image */
+  .bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+  }
+  /*blurry background*/
