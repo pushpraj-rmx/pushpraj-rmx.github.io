@@ -11,6 +11,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .header h2, h6 {
     text-align: center;
+    background-color: black;
+    color: aliceblue;
     margin: auto;
 }
 nav {
@@ -46,33 +48,57 @@ nav a:active {
     border: 1px solid tomato;
     padding: 10px;
     border-radius: 10px;
-    margin: 8px auto;
+    margin: 8px 8px;
 }
 
 label {
+    display: inline-flex;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+form {
+    border: 1px solid orangered;
+    background-color: #babd0010;
+    border-radius: 10px;
+    text-align: left;
+    margin: 8px;
+    padding: 20px;
+}
+
+input {
+    display: flex;
+    width: 90%;
+    max-width: 960px;
+    border: 1px solid #babd00;
+    text-align: left;
+    align-items: calc(50% - 10px);
+    padding: 12px 20px;
+    margin: 8px 2px;
+}
+label textarea {
+    border: 1px solid #babd00;
+    border-radius: 10px;
+
+}
+label .feedback {
+    background-color: #babd0011;
+    margin:auto;
+    padding: 8px;
+
+}
+label .rate {
     display: block;
     text-align: center;
 }
+select {
+    display: flex;
+    align-items: center;
 
-
-
-
-
-
-
-
-
+}
 
 
 /*=============================================================================================*/
-
-
-
-
-
-
-
-
 /*          # The followng codes will be implementeed later
 header{
     background-color: White;

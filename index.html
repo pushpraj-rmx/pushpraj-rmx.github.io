@@ -62,34 +62,25 @@
   action="https://formspree.io/f/xjvlabrj"
   method="POST"
   >
-    <label class="label"><input type="email" name="email"></label>
-
-    <label class="label"></label>><input type="text" placeholder="Username"></label>
-    <br>
-    <label class="label"><input type="password" placeholder="Password"></label>
-    
-    <label class="label">Date of birth<input type="date"></label>
-    <br>
-    <label class="label">Choose applicable <br> <input type="checkbox">
-    
-    <label class="label">option-1<input type="checkbox"></label>
-
-    <label>option-2<input type="checkbox"></label>
-
-    <label>option-3<input type="checkbox"></label>
-
-    <label>Yes <input type="radio" name="yesno" value="yes"></label>
-
-    <label>No <input type="radio" name="yesno" value="no"></label>
-
-    <textarea name="Feedback" id="" cols="30" rows="10"></textarea>
-  
-  <label>Your message:<textarea name="message"></textarea></label>
+<label for="">Your Name <input type="text"> </label>
+<label for="">Email <input type="text"> </label>
+<br>
+<label for="" id="rate">Please rate this website out of 10</label>
 <!--dropdown list-->
-<select name="languages" id="gen">Java
-    <option value="java">java</option>
-    <option value="C++">c++</option>
+<select name="rating" id="lists">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
 </select>
+<br>
+<label id="feed-label">Your message:<textarea name="message" placeholder="your feedback" class="feedback" rows="5"></textarea></label>
 <!-- your other form fields go here -->
 <button type="submit">Send</button>
 </form>
@@ -101,13 +92,12 @@
         <a href="https://www.quora.com/pushpraj-rmx" target="blank"> Quora</a>
         <a href="https://www.github.com/pushpraj-rmx" target="blank" >GitHub</a>
         <a href="./about-me.html" target="blank">About me </a>
-
-<a href="./page2.html">next-page</a>
+        <a href="./page2.html">next-page</a>
 <a href="https://www.google.com" target="_blank">Google</a>
 <!-- <video src="./video-file.mp4" controls> Videos</video> -->
 <hr>
 <!--Footer-->
-<h5>Copyright &copy;</h5>
+<h5>Copyright &copy; | This website was made using HTML and CSS only | Please share feedback</h5>
 </body>
 </html>
 <!-- External css gets overwritten by internal css and internal css gets overwritten by inline css -->
