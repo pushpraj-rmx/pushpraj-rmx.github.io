@@ -20,10 +20,12 @@ nav a:link, a:visited {
     text-align: center;
     text-decoration: none;
     padding: 1px 1%;
+    margin: 4px 2px;
     color: orangered;
     border: 1px solid orangered;
     background-color: #9001;
     border-radius: 10px;
+    display: inline-block;
 }
 nav a:hover {
     text-decoration: none;
