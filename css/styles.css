@@ -1,7 +1,9 @@
 * {
     background-color:#0000;
+    margin: 0;
 }
 body{
+    position: relative;
     max-width: 960px;
     margin: auto;
 }
