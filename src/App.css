@@ -1,16 +1,40 @@
+/*  MAKE THESE STYLES COMPONENT SPECIFIC IF POSSIBLE IN FUTIRE */
+
 .app-wrapper {
+  width: 100vw;
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  /* align-items: center; */
+  justify-content: center;
 }
 
-/* .left-sidebar, 
+.main-content {
+  width: 70vw;
+  border-left: 1px solid rgb(170, 170, 170);
+  border-right: 1px solid rgb(171, 171, 171);
+}
+
 .left-sidebar,
-main {
-  
-} */
+.right-sidebar {
+  display: none !important;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  /* align-items: center; */
+  /* text-align: left; */
+  /* justify-content: center; */
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(170, 170, 170);
+  /* margin: 10px 0; */
+}
+
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 
