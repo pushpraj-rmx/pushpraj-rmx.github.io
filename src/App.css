@@ -15,7 +15,7 @@
 
 .left-sidebar,
 .right-sidebar {
-  display: none !important;
+  /* display: none !important; */
   width: 15vw;
   display: flex;
   flex-direction: column;
