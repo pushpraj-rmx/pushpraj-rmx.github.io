@@ -32,9 +32,47 @@
   /* margin: 10px 0; */
 }
 
-
 .wrapper {
   display: flex;
   justify-content: space-between;
 }
 
+/* MODAL */
+
+.modalBtn {
+  z-index: 11;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal.shown {
+  display: block;
+}
+
+.modal .overlay {
+  background-color: rgba(0, 0, 0, 0.887);
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+
+.modal-box {
+  position: absolute;
+  background-color: aliceblue;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.bullet-1::before {
+  content:"&5646;";
+}

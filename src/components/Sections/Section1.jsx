@@ -2,13 +2,13 @@ function Section1() {
     return (
         <>
             <div className="section1">
-                <h1>Education</h1>
-                <div className="divider"></div>
+                <h1>Work Experience</h1>
+                {/* <div className="divider"></div> */}
                 <div className="wrapper">
 
                     <div className="left">
 
-                        <p>
+                        <p className="bullet-1">
                             Bachelor of Technology in Computer Science and Engineering(Cyber Security)
                         </p>
                         <h4>
