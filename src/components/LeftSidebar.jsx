@@ -1,4 +1,5 @@
 import Counter from '../games/Counter';
+import Modal from './Modal/Modal';
 
 function LeftSidebar() {
     return (
@@ -12,6 +13,7 @@ function LeftSidebar() {
                 <a href="">Link Four</a>
                 <a href="">Link Five</a>
                 <h4>Games</h4>
+                <Modal/>
                 <Counter />
             </div>
         </>
