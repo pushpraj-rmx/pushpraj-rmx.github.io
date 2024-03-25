@@ -1,20 +1,16 @@
-import LeftSidebar from './components/LeftSidebar'
-import RightSidebar from './components/RightSidebar'
-import MainContent from './components/MainContent'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
 
-import './App.css'
+import "./App.css";
 
 function App() {
-
   return (
-    <div className="app-wrapper">
-      <LeftSidebar />
-      <MainContent />
-      <RightSidebar />
-      
-    </div>
-
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+q      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
