@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Pushpraj Dwivedi — Backend &amp; DevOps Engineer</title>
+    <meta
+      name="description"
+      content="Pushpraj Dwivedi is a backend and DevOps engineer building scalable, reliable systems — messaging infrastructure, multi-tenant platforms, and the pipelines that ship them."
+    />
+    <meta name="author" content="Pushpraj Dwivedi" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Pushpraj Dwivedi — Backend &amp; DevOps Engineer" />
+    <meta
+      property="og:description"
+      content="Backend and DevOps engineer building scalable, reliable systems."
+    />
+    <meta property="og:url" content="https://pushpraj-rmx.github.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Apply the stored theme before first paint so there is no flash.
+      try {
+        var stored = localStorage.getItem("theme");
+        var dark = stored
+          ? stored === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
