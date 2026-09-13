@@ -1,55 +1,39 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Obsidian: a single dark look, emerald accent, hairline rules. */
+@theme {
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-:root {
-  --bg: #fbfaf8;
-  --surface: #ffffff;
-  --fg: #16161c;
-  --muted: #6d6d78;
-  --line: #e6e4df;
-  --accent: #4f46e5;
-  --accent-soft: #eef1ff;
-}
-
-.dark {
-  --bg: #0c0c0f;
-  --surface: #131318;
-  --fg: #ececed;
-  --muted: #9596a1;
-  --line: #24242c;
-  --accent: #9d97ff;
-  --accent-soft: #1a1930;
-}
-
-@theme inline {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-fg: var(--fg);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-bg: #0c0d0f;
+  --color-fg: #f2f2f0;
+  --color-muted: #9a9b99;
+  --color-dim: #6e706f;
+  --color-line: #222428;
+  --color-accent: #34d399;
+  --color-accent-hi: #6ee7b7;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: rgb(52 211 153 / 0.25);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
 
 /* Respect users who ask for less motion. */

@@ -1,334 +1,359 @@
-import { useEffect, useState } from "react"
+import { useState, type FormEvent, type ReactNode } from "react"
 import { flagship, profile, projects, services, stack, stats, tooling } from "./data"
 
-function ThemeToggle() {
-  const [dark, setDark] = useState(
-    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark"),
-  )
+const container = "mx-auto max-w-[1120px] px-5 sm:px-7"
+const eyebrow = "font-mono text-[11px] tracking-[0.12em] uppercase"
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark)
-    try {
-      localStorage.setItem("theme", dark ? "dark" : "light")
-    } catch {
-      /* storage can be unavailable in private windows */
-    }
-  }, [dark])
-
-  return (
-    <button
-      type="button"
-      onClick={() => setDark((d) => !d)}
-      aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}
-      className="grid size-9 place-items-center rounded-full border border-line text-muted transition hover:border-accent hover:text-accent"
-    >
-      {dark ? (
-        <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.7">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.7">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
-        </svg>
-      )}
-    </button>
-  )
-}
-
-function Header() {
+function Nav() {
   const links = [
-    ["MsgBuddy", "#flagship"],
     ["Work", "#work"],
     ["Services", "#services"],
     ["Stack", "#stack"],
-    ["Contact", "#contact"],
   ]
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-bg/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-medium tracking-tight">
-          {profile.name}
+    <nav className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
+      <div className={`${container} flex flex-wrap items-center justify-between gap-4 py-5 sm:py-6`}>
+        <a href="#top" className="font-bold tracking-tight hover:text-fg">
+          {profile.name.split(" ")[0]}
         </a>
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <div className="flex items-center gap-5 text-sm sm:gap-8">
           {links.map(([label, href]) => (
-            <a
-              key={href}
-              href={href}
-              className="hidden rounded-full px-3 py-1.5 text-sm text-muted transition hover:text-fg sm:block"
-            >
+            <a key={href} href={href} className="hidden text-muted transition hover:text-fg sm:inline">
               {label}
             </a>
           ))}
-          <ThemeToggle />
-        </nav>
+          <a href="#contact" className="border-b border-accent pb-0.5 transition hover:text-accent">
+            Contact
+          </a>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+function Hero() {
+  const [first, second] = profile.headline
+  return (
+    <header id="top" className="border-b border-line pt-20 pb-16 sm:pt-24 sm:pb-[72px]">
+      <div className="mb-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+        <span className={`${eyebrow} text-xs text-accent`}>{profile.role}</span>
+        <span className={`${eyebrow} inline-flex items-center gap-2 text-muted`}>
+          <span className="size-1.5 rounded-full bg-accent [animation:pulse-dot_2s_ease-in-out_infinite]" />
+          Available for work
+        </span>
+      </div>
+      <h1 className="text-[clamp(44px,7vw,84px)] leading-none font-bold tracking-[-0.04em] text-pretty">
+        {first}
+        <br />
+        <span className="text-dim">{second}</span>
+      </h1>
+      <div className="mt-12 flex flex-wrap items-end justify-between gap-8 sm:mt-[52px]">
+        <p className="max-w-[46ch] leading-[1.7] text-muted text-pretty">{profile.lead}</p>
+        <div className="flex flex-wrap gap-3.5">
+          <a
+            href="#work"
+            className="bg-accent px-6 py-3.5 font-mono text-[13px] font-semibold text-bg transition hover:bg-accent-hi hover:text-bg"
+          >
+            Selected work ↓
+          </a>
+          <a
+            href="#contact"
+            className="border border-accent px-6 py-3.5 font-mono text-[13px] transition hover:text-accent"
+          >
+            Get in touch
+          </a>
+        </div>
       </div>
     </header>
   )
 }
 
-function Hero() {
+function Metrics() {
   return (
-    <section id="top" className="mx-auto grid max-w-5xl items-center gap-12 px-6 pt-20 pb-24 sm:pt-28 sm:pb-32 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-      <div>
-      <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Available for work</p>
-      <h1 className="mt-5 text-4xl leading-[1.08] font-semibold tracking-tight text-balance sm:text-6xl">
-        Backend &amp; DevOps Engineer
-      </h1>
-      <div className="mt-7 h-px w-16 bg-accent" />
-      <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted text-pretty">{profile.lead}</p>
-      <div className="mt-10 flex flex-wrap items-center gap-3">
-        <a
-          href={`mailto:${profile.email}`}
-          className="rounded-full bg-fg px-5 py-2.5 text-sm font-medium text-bg transition hover:opacity-90"
+    <div className="grid grid-cols-1 border-b border-line sm:grid-cols-3">
+      {stats.map((st, i) => (
+        <div
+          key={st.label}
+          className={`flex flex-col gap-1.5 py-6 sm:py-7 ${
+            i > 0 ? "border-t border-line sm:border-t-0 sm:border-l sm:pl-7" : ""
+          }`}
         >
-          Get in touch
-        </a>
-        <a
-          href={profile.github}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full border border-line px-5 py-2.5 text-sm font-medium transition hover:border-accent hover:text-accent"
-        >
-          GitHub
-        </a>
-      </div>
-      </div>
-
-      <dl className="rounded-2xl border border-line bg-surface p-6 sm:p-7">
-        {stats.map((st, i) => (
-          <div key={st.label} className={i > 0 ? "mt-6 border-t border-line pt-6" : ""}>
-            <dt className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">{st.value}</dt>
-            <dd className="mt-1 text-sm font-medium">{st.label}</dd>
-            <dd className="mt-1 font-mono text-[11px] leading-relaxed text-muted">{st.note}</dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  )
-}
-
-function SectionLabel({ n, title }: { n: string; title: string }) {
-  return (
-    <div className="mb-10 flex items-baseline gap-4 border-b border-line pb-4">
-      <span className="font-mono text-xs text-accent">{n}</span>
-      <h2 className="text-sm font-medium tracking-[0.18em] uppercase">{title}</h2>
+          <span className="text-[26px] font-bold tracking-[-0.02em] tabular-nums">{st.value}</span>
+          <span className={`${eyebrow} text-dim`}>{st.label}</span>
+          <span className="text-xs text-dim/80">{st.note}</span>
+        </div>
+      ))}
     </div>
   )
 }
 
-function ArrowUpRight() {
+function Section({ id, n, title, children }: { id: string; n: string; title: string; children: ReactNode }) {
   return (
-    <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M7 17 17 7M9 7h8v8" />
-    </svg>
+    <section id={id} className="scroll-mt-20 border-b border-line py-16 sm:py-20">
+      <div className="mb-11 flex flex-wrap items-baseline justify-between gap-4">
+        <h2 className="text-[34px] font-bold tracking-[-0.03em]">{title}</h2>
+        <span className={`${eyebrow} text-xs text-dim`}>
+          {n} / {id}
+        </span>
+      </div>
+      {children}
+    </section>
   )
 }
 
 function Flagship() {
   return (
-    <section id="flagship" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-20">
-      <SectionLabel n="01" title="Flagship" />
-      <div className="rounded-2xl border border-line bg-surface p-6 sm:p-9">
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <h3 className="text-3xl font-semibold tracking-tight sm:text-4xl">{flagship.name}</h3>
-          <span className="inline-flex items-center gap-1.5 font-mono text-xs text-accent">
-            <span className="size-1.5 rounded-full bg-accent" />
-            live in production
-          </span>
-        </div>
-        <p className="mt-2 font-mono text-sm text-accent">{flagship.tagline}</p>
-        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-pretty">{flagship.plain}</p>
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted text-pretty">{flagship.blurb}</p>
+    <div className="border-t border-line py-8 sm:py-10">
+      <div className="grid gap-x-6 gap-y-3 sm:grid-cols-[72px_minmax(0,1fr)]">
+        <span className="font-mono text-[13px] text-accent">001</span>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <h3 className="text-[32px] font-semibold tracking-[-0.02em] sm:text-[40px]">{flagship.name}</h3>
+            <span className={`${eyebrow} inline-flex items-center gap-2 text-accent`}>
+              <span className="size-1.5 rounded-full bg-accent [animation:pulse-dot_2s_ease-in-out_infinite]" />
+              Live in production
+            </span>
+          </div>
+          <p className="mt-1.5 font-mono text-[13px] text-dim">{flagship.tagline}</p>
+          <p className="mt-5 max-w-[64ch] text-lg leading-[1.6] text-pretty">{flagship.plain}</p>
+          <p className="mt-3 max-w-[72ch] text-sm leading-[1.7] text-muted text-pretty">{flagship.blurb}</p>
 
-        <div className="mt-7 flex flex-wrap gap-2">
-          {flagship.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-sm transition hover:border-accent hover:text-accent"
-            >
-              {l.label}
-              <ArrowUpRight />
-            </a>
-          ))}
-        </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px]">
+            {flagship.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                className="border-b border-accent/40 pb-0.5 text-accent transition hover:text-accent-hi"
+              >
+                {l.label} ↗
+              </a>
+            ))}
+          </div>
 
-        <div className="mt-9 grid gap-4 sm:grid-cols-2">
-          {flagship.shots.map((shot) => (
-            <figure key={shot.src} className="overflow-hidden rounded-xl border border-line">
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                loading="lazy"
-                width="1200"
-                height="609"
-                className="block w-full"
-              />
-              <figcaption className="border-t border-line bg-bg px-3 py-2 font-mono text-[11px] text-muted">
-                {shot.caption}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
+          <div className="mt-9 grid gap-4 sm:grid-cols-2">
+            {flagship.shots.map((shot) => (
+              <figure key={shot.src} className="overflow-hidden border border-line">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  loading="lazy"
+                  width="1200"
+                  height="609"
+                  className="block w-full opacity-90 transition hover:opacity-100"
+                />
+                <figcaption className="border-t border-line px-3 py-2 font-mono text-[11px] text-dim">
+                  {shot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
 
-        <div className="mt-9 border-t border-line pt-7">
-          <p className="font-mono text-xs tracking-[0.15em] text-muted uppercase">Surfaces</p>
-          <div className="mt-5 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+          <div className="mt-10 grid gap-x-7 sm:grid-cols-2 lg:grid-cols-3">
             {flagship.surfaces.map((s) => (
-              <div key={s.name} className="border-l-2 border-line pl-4 transition hover:border-accent">
-                <h4 className="font-medium">{s.name}</h4>
-                <p className="mt-1 text-sm leading-relaxed text-muted text-pretty">{s.blurb}</p>
-                <p className="mt-2 font-mono text-[11px] text-muted/80">{s.tech.join(" · ")}</p>
+              <div key={s.name} className="border-t border-line py-5">
+                <h4 className={`${eyebrow} text-accent`}>{s.name}</h4>
+                <p className="mt-2.5 text-sm leading-[1.65] text-muted text-pretty">{s.blurb}</p>
+                <p className="mt-2.5 font-mono text-[11px] text-dim">{s.tech.join(" · ")}</p>
               </div>
             ))}
           </div>
-        </div>
 
-        <ul className="mt-9 flex flex-wrap gap-2 border-t border-line pt-7">
-          {flagship.tech.map((t) => (
-            <li key={t} className="rounded-md bg-accent-soft px-2.5 py-1 font-mono text-[11px] text-accent">
-              {t}
-            </li>
-          ))}
-        </ul>
+          <p className="mt-4 font-mono text-xs leading-relaxed text-dim">{flagship.tech.join(" · ")}</p>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }
 
 function Work() {
   return (
-    <section id="work" className="scroll-mt-20 border-y border-line bg-surface/60 py-20">
-      <div className="mx-auto max-w-5xl px-6">
-      <SectionLabel n="02" title="Selected work" />
-      <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((p) => (
-          <article
-            key={p.name}
-            className="group relative flex flex-col rounded-2xl border border-line bg-surface p-6 transition duration-300 hover:-translate-y-0.5 hover:border-accent/50"
-          >
-            <h3 className="text-lg font-semibold tracking-tight">{p.name}</h3>
-            <p className="mt-1 font-mono text-xs text-accent">{p.tagline}</p>
-            <p className="mt-4 leading-relaxed text-pretty">{p.plain}</p>
-            <p className="mt-2.5 text-sm leading-relaxed text-muted text-pretty">{p.blurb}</p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {p.tech.map((t) => (
-                <li
-                  key={t}
-                  className="rounded-md bg-accent-soft px-2.5 py-1 font-mono text-[11px] text-accent"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+    <Section id="work" n="01" title="Selected work">
+      <Flagship />
+      {projects.map((p, i) => (
+        <article
+          key={p.name}
+          className="grid gap-x-6 gap-y-2 border-t border-line py-7 transition hover:bg-accent/[0.03] sm:grid-cols-[72px_minmax(0,1fr)] sm:py-8"
+        >
+          <span className="font-mono text-[13px] text-dim">{String(i + 2).padStart(3, "0")}</span>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <h3 className="text-2xl font-semibold tracking-[-0.02em]">{p.name}</h3>
+              <span className="font-mono text-[12px] text-dim">{p.tagline}</span>
+            </div>
+            <p className="mt-2 max-w-[68ch] leading-[1.6] text-pretty">{p.plain}</p>
+            <p className="mt-1.5 max-w-[72ch] text-sm leading-[1.6] text-muted text-pretty">
+              {p.blurb} <span className="text-dim">{p.tech.join(" · ")}</span>
+            </p>
+          </div>
+        </article>
+      ))}
+      <div className="grid gap-x-6 gap-y-2 border-t border-dashed border-line pt-7 sm:grid-cols-[72px_minmax(0,1fr)] sm:pt-8">
+        <span className={`${eyebrow} text-dim`}>Also</span>
+        <div className="min-w-0">
+          <h3 className="text-lg font-semibold tracking-[-0.01em]">{tooling.name}</h3>
+          <p className="mt-1.5 max-w-[72ch] text-sm leading-[1.6] text-muted text-pretty">
+            {tooling.blurb} <span className="text-dim">{tooling.tech.join(" · ")}</span>
+          </p>
+        </div>
       </div>
-
-      <div className="mt-10 rounded-2xl border border-dashed border-line p-6">
-        <p className="font-mono text-xs tracking-[0.15em] text-muted uppercase">Also maintained</p>
-        <h3 className="mt-3 font-semibold tracking-tight">{tooling.name}</h3>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted text-pretty">{tooling.blurb}</p>
-        <p className="mt-3 font-mono text-[11px] text-muted/80">{tooling.tech.join(" · ")}</p>
-      </div>
-      </div>
-    </section>
+    </Section>
   )
 }
 
 function Services() {
   return (
-    <section id="services" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-20">
-      <SectionLabel n="03" title="What I can help with" />
-      <div className="grid gap-x-8 gap-y-9 sm:grid-cols-2">
+    <Section id="services" n="02" title="What I can help with">
+      <div>
         {services.map((s, i) => (
-          <div key={s.title}>
-            <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
-            <h3 className="mt-2 text-lg font-medium tracking-tight">{s.title}</h3>
-            <p className="mt-2 leading-relaxed text-muted text-pretty">{s.body}</p>
+          <div
+            key={s.title}
+            className="grid gap-x-6 gap-y-2 border-t border-line py-7 last:border-b sm:grid-cols-[minmax(140px,200px)_minmax(0,1fr)]"
+          >
+            <span className="font-mono text-[13px] text-dim">{String(i + 1).padStart(2, "0")}</span>
+            <div className="min-w-0">
+              <h3 className="text-xl font-semibold tracking-[-0.01em]">{s.title}</h3>
+              <p className="mt-2 max-w-[64ch] text-sm leading-[1.7] text-muted text-pretty">{s.body}</p>
+            </div>
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   )
 }
 
 function Stack() {
   return (
-    <section id="stack" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-20">
-      <SectionLabel n="04" title="Stack" />
-      <dl className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+    <Section id="stack" n="03" title="Stack">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-x-7 gap-y-10">
         {stack.map((s) => (
-          <div key={s.group}>
-            <dt className="font-mono text-xs tracking-[0.15em] text-muted uppercase">{s.group}</dt>
-            <dd className="mt-3 flex flex-wrap gap-x-2 gap-y-2">
-              {s.items.map((i) => (
-                <span key={i} className="rounded-lg border border-line px-3 py-1.5 text-sm">
-                  {i}
-                </span>
+          <div key={s.group} className="flex flex-col gap-4">
+            <div className={`${eyebrow} border-b border-line pb-3 tracking-[0.14em] text-accent`}>{s.group}</div>
+            <ul className="text-[15px] leading-[2.1] text-muted">
+              {s.items.map((item) => (
+                <li key={item}>{item}</li>
               ))}
-            </dd>
+            </ul>
           </div>
         ))}
-      </dl>
-    </section>
+      </div>
+    </Section>
   )
 }
 
-function Contact() {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <section id="contact" className="mx-auto max-w-5xl scroll-mt-20 px-6 py-20">
-      <SectionLabel n="05" title="Contact" />
-      <p className="max-w-lg text-2xl leading-snug font-medium tracking-tight text-balance sm:text-3xl">
-        Have something you want built properly?
-      </p>
-      <a
-        href={`mailto:${profile.email}`}
-        className="mt-6 inline-block font-mono text-sm text-accent underline-offset-4 hover:underline"
-      >
-        {profile.email}
-      </a>
-      <div className="mt-10 flex gap-3">
-        {[
-          ["GitHub", profile.github],
-          ["LinkedIn", profile.linkedin],
-        ].map(([label, href]) => (
+    <label className="flex min-w-0 flex-col gap-2.5">
+      <span className={`${eyebrow} tracking-[0.14em] text-dim`}>{label}</span>
+      {children}
+    </label>
+  )
+}
+
+const inputClass =
+  "min-w-0 border-0 border-b border-line bg-transparent py-2 text-[15px] text-fg outline-none placeholder:text-dim/70 focus:border-accent"
+
+function Contact() {
+  const [sent, setSent] = useState(false)
+
+  function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    const name = String(data.get("name"))
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`)
+    const body = encodeURIComponent(`${data.get("message")}\n\n— ${name} (${data.get("email")})`)
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
+    setSent(true)
+    setTimeout(() => setSent(false), 4000)
+  }
+
+  return (
+    <footer id="contact" className="scroll-mt-20 pt-20 pb-16 sm:pt-24 sm:pb-[72px]">
+      <span className={`${eyebrow} text-xs text-dim`}>04 / Contact</span>
+      <h2 className="mt-6 text-[clamp(36px,5.5vw,64px)] leading-[1.05] font-bold tracking-[-0.04em] text-pretty">
+        Have something you want
+        <br />
+        <span className="text-dim">built properly?</span>
+      </h2>
+
+      <div className="mt-11 grid items-start gap-14 md:grid-cols-2">
+        <div className="flex min-w-0 flex-col gap-4">
+          <p className="max-w-[44ch] text-[15px] leading-[1.7] text-muted text-pretty">
+            Open to full-time roles and contract work. Tell me what you're building — I usually reply within a
+            day.
+          </p>
           <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-line px-4 py-2 text-sm transition hover:border-accent hover:text-accent"
+            href={`mailto:${profile.email}`}
+            className="self-start border-b border-accent/40 pb-1 font-mono text-[15px] break-all text-accent transition hover:text-accent-hi"
           >
-            {label}
+            {profile.email}
           </a>
-        ))}
+        </div>
+
+        <form onSubmit={submit} className="flex min-w-0 flex-col gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <Field label="Name">
+              <input name="name" type="text" required placeholder="Jane Doe" className={inputClass} />
+            </Field>
+            <Field label="Email">
+              <input name="email" type="email" required placeholder="jane@company.com" className={inputClass} />
+            </Field>
+          </div>
+          <Field label="Message">
+            <textarea
+              name="message"
+              required
+              rows={4}
+              placeholder="What are you building?"
+              className={`${inputClass} resize-y leading-[1.6]`}
+            />
+          </Field>
+          <div className="flex flex-wrap items-center gap-4">
+            <button
+              type="submit"
+              className="cursor-pointer bg-accent px-7 py-3.5 font-mono text-[13px] font-semibold text-bg transition hover:bg-accent-hi"
+            >
+              Send message →
+            </button>
+            {sent && <span className="font-mono text-xs text-accent">✓ Opening your mail client…</span>}
+          </div>
+        </form>
       </div>
-    </section>
+
+      <div className="mt-[72px] flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6 font-mono text-xs">
+        <div className="flex gap-7 tracking-[0.08em]">
+          {[
+            ["GITHUB", profile.github],
+            ["LINKEDIN", profile.linkedin],
+          ].map(([label, href]) => (
+            <a key={label} href={href} target="_blank" rel="noreferrer" className="text-muted transition hover:text-accent">
+              {label}
+            </a>
+          ))}
+        </div>
+        <span className="text-dim">
+          © {new Date().getFullYear()} {profile.name.toUpperCase()}
+        </span>
+      </div>
+    </footer>
   )
 }
 
 export default function App() {
   return (
     <>
-      <Header />
-      <main>
-        <Hero />
-        <Flagship />
-        <Work />
-        <Services />
-        <Stack />
+      <Nav />
+      <div className={container}>
+        <main>
+          <Hero />
+          <Metrics />
+          <Work />
+          <Services />
+          <Stack />
+        </main>
         <Contact />
-      </main>
-      <footer className="border-t border-line">
-        <div className="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} {profile.name}</span>
-          <span className="font-mono text-xs">Built with React, Vite &amp; Tailwind</span>
-        </div>
-      </footer>
+      </div>
     </>
   )
 }

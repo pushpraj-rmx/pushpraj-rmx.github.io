@@ -1,6 +1,7 @@
 export const profile = {
   name: "Pushpraj Dwivedi",
   role: "Backend & DevOps Engineer",
+  headline: ["Systems that scale.", "Pipelines that ship."],
   lead: "I build scalable, reliable systems — messaging infrastructure, multi-tenant platforms, and the pipelines that ship them.",
   email: "pushprajdwivedi001@gmail.com",
   github: "https://github.com/pushpraj-rmx",
