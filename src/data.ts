@@ -1,8 +1,8 @@
 export const profile = {
   name: "Pushpraj Dwivedi",
-  role: "Backend & DevOps Engineer",
+  role: "Product Engineer",
   headline: ["Systems that scale.", "Pipelines that ship."],
-  lead: "I build scalable, reliable systems — messaging infrastructure, multi-tenant platforms, and the pipelines that ship them.",
+  lead: "Full-stack product engineer — I own products end to end, from the API and the infrastructure it runs on through the web, desktop and mobile clients on top.",
   email: "pushprajdwivedi001@gmail.com",
   github: "https://github.com/pushpraj-rmx",
   linkedin: "https://linkedin.com/in/pushpraj-rmx",
@@ -163,6 +163,10 @@ export const services = [
     body: "WhatsApp Business and Cloud API work: template messaging, inbound webhooks, bulk delivery, rate limiting and retry handling.",
   },
   {
+    title: "Security hardening",
+    body: "Auth done properly — token rotation, session handling, tenant isolation, encrypted fields, rate limiting and input validation — plus dependency and secret hygiene in the pipeline.",
+  },
+  {
     title: "DevOps & delivery",
     body: "Dockerised environments, CI/CD pipelines, VPS deployment and process management, so shipping stops being an event.",
   },
@@ -173,4 +177,8 @@ export const stack = [
   { group: "Backend", items: ["Node.js", "NestJS", "Express", "Prisma", "BullMQ"] },
   { group: "Data", items: ["PostgreSQL", "MySQL", "Redis", "SQLite"] },
   { group: "DevOps", items: ["Linux", "Docker", "GitHub Actions", "CI/CD", "VPS", "pm2"] },
+  {
+    group: "Security",
+    items: ["OAuth 2.0 / JWT", "Refresh rotation", "OWASP Top 10", "Field encryption", "Rate limiting", "Secrets management"],
+  },
 ]
